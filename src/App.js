@@ -1,35 +1,26 @@
-import React from 'react';
-import Paragraph from "./paragraph";
-import {Button} from "./button";
+import React, {Fragment} from 'react';
+import {movies} from './movies';
 
 function App() {
-    // const {objectProperty} = object;
-    //
-    // object = {
-    //     objectProperty: value
-    // };
-
-    const [count, setCount] = React.useState(0);
-    // same thing as these lines below
-    // const state = React.useState(0);
-    // const count = state[0];
-    // const setCount = state[1];
-
     return (
         <div>
-            <p>{count}</p>
-            <Button
-                buttonText={'Increment'}
-                onClickFunction={() => setCount(count + 1)}
-            />
-            <Button
-                buttonText={'Decrement'}
-                onClickFunction={() => setCount(count - 1)}
-            />
-            <Button
-                buttonText={'Reset Count'}
-                onClickFunction={() => setCount(0)}
-            />
+            <h1>Movie Information</h1>
+            {
+                movies.map((movie) => {
+                    // some JS logic can go here
+                    // React.Fragment is the same as Fragment, but you need to  destructure Fragment from the react import if you use just 'Fragment'
+                    // <> and </> can also be used in place of <React.Fragment/> if you don't need to use a key
+
+                    return (
+                        <div key={movie.title} style={{backgroundColor: 'cornflowerblue'}}>
+                            <p>{movie.title}</p>
+                            <p>{movie.rating}</p>
+                            <p>{movie.director}</p>
+                            <p>{movie.releaseYear}</p>
+                        </div>
+                    )
+                })
+            }
         </div>
     );
 }
