@@ -1,16 +1,35 @@
+import React from 'react';
 import Paragraph from "./paragraph";
 import {Button} from "./button";
 
 function App() {
+    // const {objectProperty} = object;
+    //
+    // object = {
+    //     objectProperty: value
+    // };
+
+    const [count, setCount] = React.useState(0);
+    // same thing as these lines below
+    // const state = React.useState(0);
+    // const count = state[0];
+    // const setCount = state[1];
+
     return (
         <div>
-            <p>Hello World</p>
-            <Paragraph text={'Jasmine Rocks!'}/>
-            <Paragraph text={'Jeff Rocks!'}/>
-            <Paragraph text={'I love JavaScript too much!'}/>
-            <Paragraph text={'Super excited'}/>
-            <Button buttonText={'Click Me!'} onClickFunction={() => alert('You clicked this button!')}/>
-            <Button buttonText={'Click the other one'} onClickFunction={() => console.log('You clicked the second button.')}/>
+            <p>{count}</p>
+            <Button
+                buttonText={'Increment'}
+                onClickFunction={() => setCount(count + 1)}
+            />
+            <Button
+                buttonText={'Decrement'}
+                onClickFunction={() => setCount(count - 1)}
+            />
+            <Button
+                buttonText={'Reset Count'}
+                onClickFunction={() => setCount(0)}
+            />
         </div>
     );
 }
