@@ -1,25 +1,33 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {movies} from './movies';
+import MoviePreview from "./movie-preview";
+import MovieDetails from "./movie-details";
+import './App.css';
+
 
 function App() {
+    const [currentMovie, setCurrentMovie] = React.useState(null);
+
     return (
         <div>
-            <h1>Movie Information</h1>
+            <h1 style={{textAlign: 'center'}}>Movie Information</h1>
             {
                 movies.map((movie) => {
-                    // some JS logic can go here
-                    // React.Fragment is the same as Fragment, but you need to  destructure Fragment from the react import if you use just 'Fragment'
-                    // <> and </> can also be used in place of <React.Fragment/> if you don't need to use a key
-
                     return (
-                        <div key={movie.title} style={{backgroundColor: 'cornflowerblue'}}>
-                            <p>{movie.title}</p>
-                            <p>{movie.rating}</p>
-                            <p>{movie.director}</p>
-                            <p>{movie.releaseYear}</p>
-                        </div>
+                        <MoviePreview
+                            key={movie.title}
+                            movie={movie}
+                            onClickFunction={setCurrentMovie}
+                        />
                     )
                 })
+            }
+
+            {
+                currentMovie ?
+                    <MovieDetails currentMovie={currentMovie}/>
+                    :
+                    <p>No movie selected</p>
             }
         </div>
     );
