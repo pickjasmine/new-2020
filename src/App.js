@@ -4,7 +4,6 @@ import MoviePreview from "./movie-preview";
 import MovieDetails from "./movie-details";
 import './App.css';
 
-
 function App() {
     const [currentMovie, setCurrentMovie] = React.useState(null);
 

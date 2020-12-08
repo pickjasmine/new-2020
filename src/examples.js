@@ -1,8 +1,6 @@
 import React, {Fragment} from 'react';
 import {movies} from './movies';
 
-// TODO: add the state examples in here
-
 const movieContainerStyles = {
     backgroundColor: '#F2EDEB',
     height: '250px',
